@@ -1,0 +1,21 @@
+[package]
+schema_version = 1
+name = "ihp.sg13g2"
+version = "0.1.0"
+description = "IHP SG13G2 130 nm BiCMOS open-source PDK"
+license = "Apache-2.0"
+
+[source]
+type = "git"
+url = "https://github.com/IHP-GmbH/IHP-Open-PDK.git"
+revision = "main"
+
+[provides]
+pdk = true
+models = true
+symbols = true
+layout = true
+verification = true
+
+[trust]
+trusted = false

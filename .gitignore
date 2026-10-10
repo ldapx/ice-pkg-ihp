@@ -1,0 +1,19 @@
+# ICE package-manager artifacts
+ice.lock
+.ice/
+
+# Upstream checkout and generated package content
+upstream/
+build/
+dist/
+
+# Local tooling
+.cache/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db
