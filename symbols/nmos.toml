@@ -1,6 +1,6 @@
 [symbol]
 name = "IHP NMOS 1.2V"
-artwork = "nmos.svg"
+artwork = "generic:nmos.svg"
 category = "Transistor"
 
 [[pin]]

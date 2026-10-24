@@ -1,6 +1,6 @@
 [symbol]
 name = "IHP NPN HBT"
-artwork = "npn_bjt.svg"
+artwork = "generic:npn_bjt.svg"
 category = "Transistor"
 
 [[pin]]

@@ -1,6 +1,6 @@
 [symbol]
 name = "IHP MIM Capacitor"
-artwork = "mim_capacitor.svg"
+artwork = "generic:capacitor.svg"
 category = "Passive"
 
 [[pin]]
