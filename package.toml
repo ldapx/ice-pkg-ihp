@@ -30,56 +30,80 @@ number = 1
 
 [[pdk.layer]]
 name = "Poly2"
-number = 2
-
-[[pdk.layer]]
-name = "Metal1"
-number = 3
-
-[[pdk.layer]]
-name = "Metal2"
-number = 4
-
-[[pdk.layer]]
-name = "Metal3"
 number = 5
 
 [[pdk.layer]]
-name = "Metal4"
-number = 6
+name = "NWell"
+number = 31
 
 [[pdk.layer]]
-name = "Metal5"
-number = 7
-
-[[pdk.layer]]
-name = "TopMetal1"
-number = 8
-
-[[pdk.layer]]
-name = "TopMetal2"
-number = 9
-
-[[pdk.layer]]
-name = "MIM"
-number = 10
-
-[[pdk.layer]]
-name = "Via1"
-number = 11
-
-[[pdk.layer]]
-name = "Via2"
-number = 12
-
-[[pdk.layer]]
-name = "Via3"
-number = 13
-
-[[pdk.layer]]
-name = "Via4"
-number = 14
+name = "PWell"
+number = 46
 
 [[pdk.layer]]
 name = "Contact"
-number = 15
+number = 6
+
+[[pdk.layer]]
+name = "Metal1"
+number = 8
+
+[[pdk.layer]]
+name = "Via1"
+number = 19
+
+[[pdk.layer]]
+name = "Metal2"
+number = 10
+
+[[pdk.layer]]
+name = "Via2"
+number = 29
+
+[[pdk.layer]]
+name = "Metal3"
+number = 30
+
+[[pdk.layer]]
+name = "MIM"
+number = 36
+
+[[pdk.layer]]
+name = "Vmim"
+number = 129
+
+[[pdk.layer]]
+name = "Via3"
+number = 49
+
+[[pdk.layer]]
+name = "Metal4"
+number = 50
+
+[[pdk.layer]]
+name = "Via4"
+number = 66
+
+[[pdk.layer]]
+name = "Metal5"
+number = 67
+
+[[pdk.layer]]
+name = "TopVia1"
+number = 125
+
+[[pdk.layer]]
+name = "TopMetal1"
+number = 126
+
+[[pdk.layer]]
+name = "TopVia2"
+number = 133
+
+[[pdk.layer]]
+name = "TopMetal2"
+number = 134
+
+[[pdk.layer]]
+name = "dfpad"
+number = 41
