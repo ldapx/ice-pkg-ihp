@@ -21,3 +21,9 @@ Then resolve it from a project:
 ```text
 ice-pkg resolve <repository> 0.1.0 ihp.sg13g2=0.1.0
 ```
+
+## Schematic symbols
+
+The package ships SVG schematic symbols under `symbols/` for NMOS, PMOS, NPN
+HBT, and MIM capacitor devices. They use the same SchematicSymbolsSVG artwork
+collection as the built-in ICE symbol library; see `symbols/ATTRIBUTION.md`.

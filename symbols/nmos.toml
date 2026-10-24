@@ -1,0 +1,28 @@
+[symbol]
+name = "IHP NMOS 1.2V"
+artwork = "nmos.svg"
+category = "IHP SG13G2 / MOS"
+
+[[pin]]
+name = "G"
+x = -32
+y = 11
+direction = "input"
+
+[[pin]]
+name = "D"
+x = 32
+y = 13
+direction = "inout"
+
+[[pin]]
+name = "S"
+x = 32
+y = -11
+direction = "inout"
+
+[[pin]]
+name = "B"
+x = 32
+y = 0
+direction = "inout"

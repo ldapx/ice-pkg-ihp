@@ -1,0 +1,22 @@
+[symbol]
+name = "IHP NPN HBT"
+artwork = "npn_bjt.svg"
+category = "IHP SG13G2 / Bipolar"
+
+[[pin]]
+name = "B"
+x = -32
+y = 0
+direction = "input"
+
+[[pin]]
+name = "C"
+x = 31
+y = 32
+direction = "inout"
+
+[[pin]]
+name = "E"
+x = 31
+y = -32
+direction = "inout"
