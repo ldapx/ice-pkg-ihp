@@ -19,3 +19,67 @@ verification = true
 
 [trust]
 trusted = false
+
+[pdk]
+display_name = "IHP SG13G2"
+default_schematic = "ihp_top"
+
+[[pdk.layer]]
+name = "Activ"
+number = 1
+
+[[pdk.layer]]
+name = "Poly2"
+number = 2
+
+[[pdk.layer]]
+name = "Metal1"
+number = 3
+
+[[pdk.layer]]
+name = "Metal2"
+number = 4
+
+[[pdk.layer]]
+name = "Metal3"
+number = 5
+
+[[pdk.layer]]
+name = "Metal4"
+number = 6
+
+[[pdk.layer]]
+name = "Metal5"
+number = 7
+
+[[pdk.layer]]
+name = "TopMetal1"
+number = 8
+
+[[pdk.layer]]
+name = "TopMetal2"
+number = 9
+
+[[pdk.layer]]
+name = "MIM"
+number = 10
+
+[[pdk.layer]]
+name = "Via1"
+number = 11
+
+[[pdk.layer]]
+name = "Via2"
+number = 12
+
+[[pdk.layer]]
+name = "Via3"
+number = 13
+
+[[pdk.layer]]
+name = "Via4"
+number = 14
+
+[[pdk.layer]]
+name = "Contact"
+number = 15
