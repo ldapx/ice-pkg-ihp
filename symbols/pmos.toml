@@ -1,7 +1,7 @@
 [symbol]
 name = "IHP PMOS 1.2V"
 artwork = "pmos.svg"
-category = "IHP SG13G2 / MOS"
+category = "Transistor"
 
 [[pin]]
 name = "G"

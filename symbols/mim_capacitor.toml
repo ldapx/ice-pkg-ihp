@@ -1,7 +1,7 @@
 [symbol]
 name = "IHP MIM Capacitor"
 artwork = "mim_capacitor.svg"
-category = "IHP SG13G2 / Passive"
+category = "Passive"
 
 [[pin]]
 name = "1"

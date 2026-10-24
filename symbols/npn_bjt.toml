@@ -1,7 +1,7 @@
 [symbol]
 name = "IHP NPN HBT"
 artwork = "npn_bjt.svg"
-category = "IHP SG13G2 / Bipolar"
+category = "Transistor"
 
 [[pin]]
 name = "B"
