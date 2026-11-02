@@ -52,13 +52,19 @@ can legitimately receive no fill when its keep-out leaves less than 1 µm of fre
 space.
 
 
-## Layout device generators
+## Layout device library and PCells
+
+The package ships the complete IHP layout device library as
+`layout/devices.json`, containing the flattened reference geometry and the
+parametric PCell definitions used by the ICE Devices panel. The IHP PyCell
+sources are vendored under `upstream/ihp`, so parametric regeneration no longer
+requires an external IHP checkout or `ICE_IHP_ROOT`.
 
 Layout devices are regenerated through `layout/device_generator.py`. The script
 uses `icepy.pcells`, the PCell runtime shipped with ICE's optional Python
-bindings. Upstream IHP PyCell implementations remain in the IHP checkout; ICE
-runs them through its CNI compatibility layer and transfers the resulting
-polygons into an `icepy` layout cell.
+bindings, evaluates the vendored IHP PyCell implementation through ICE's CNI
+compatibility layer, and transfers the resulting polygons into an `icepy` layout
+cell.
 
 Build and expose the Python bindings with:
 
@@ -71,7 +77,7 @@ The GUI supplies this path automatically. A device generator can then be
 exercised directly:
 
 ```text
-python layout/device_generator.py --ihp-root <IHP> \
+python layout/device_generator.py --pdk-root . \
   --module nmos_code --class nmos --params-file params.json --output geometry.json
 ```
 
