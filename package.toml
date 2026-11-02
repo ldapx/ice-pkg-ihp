@@ -15,6 +15,8 @@ pdk = true
 models = true
 symbols = true
 layout = true
+dummy_fill = true
+pcells = true
 verification = true
 
 [trust]
@@ -23,6 +25,48 @@ trusted = false
 [pdk]
 display_name = "IHP SG13G2"
 default_schematic = "ihp_top"
+
+id = "ihp-sg13g2"
+aliases = ["ihp.sg13g2"]
+
+[pdk.simulation]
+engine = "ngspice"
+root = "libs.tech/ngspice"
+model_file = "models/cornerMOSlv.lib"
+section = "mos_tt"
+includes = []
+options = []
+requires_osdi = true
+verilog_a = "pdk/verilog-a"
+compiler_flags = ["-D__NGSPICE__"]
+
+[pdk.simulation.devices]
+nmos = "sg13_lv_nmos"
+pmos = "sg13_lv_pmos"
+
+[[pdk.simulation.osdi]]
+source = "pdk/verilog-a/psp103/psp103.va"
+output = "psp103.osdi"
+
+[[pdk.simulation.osdi]]
+source = "pdk/verilog-a/psp103/psp103_nqs.va"
+output = "psp103_nqs.osdi"
+
+[[pdk.simulation.osdi]]
+source = "pdk/verilog-a/r3_cmc/r3_cmc.va"
+output = "r3_cmc.osdi"
+
+[[pdk.simulation.osdi]]
+source = "pdk/verilog-a/mosvar/mosvar.va"
+output = "mosvar.osdi"
+
+[[pdk.simulation.osdi]]
+source = "pdk/verilog-a/cap_cmomi/cap_cmomi.va"
+output = "cap_cmomi.osdi"
+
+[[pdk.simulation.osdi]]
+source = "pdk/verilog-a/cap_cmomf/cap_cmomf.va"
+output = "cap_cmomf.osdi"
 
 [[pdk.layer]]
 name = "Activ"
