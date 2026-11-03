@@ -14,3 +14,23 @@ name = "2"
 x = 11
 y = 0
 direction = "inout"
+
+[[parameter]]
+name = "model"
+value = "cap_cmim"
+
+[[parameter]]
+name = "capacitance"
+value = "74.6f"
+
+[[parameter]]
+name = "w"
+value = "6.99u"
+
+[[parameter]]
+name = "l"
+value = "6.99u"
+
+[[parameter]]
+name = "m"
+value = "1"

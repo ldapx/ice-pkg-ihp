@@ -73,7 +73,7 @@ name = "Activ"
 number = 1
 
 [[pdk.layer]]
-name = "Poly2"
+name = "GatPoly"
 number = 5
 
 [[pdk.layer]]

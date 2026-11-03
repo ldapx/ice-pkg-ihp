@@ -20,3 +20,11 @@ name = "E"
 x = 31
 y = -32
 direction = "inout"
+
+[[parameter]]
+name = "model"
+value = "npn13G2"
+
+[[parameter]]
+name = "m"
+value = "1"

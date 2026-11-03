@@ -26,3 +26,19 @@ name = "B"
 x = 32
 y = 0
 direction = "inout"
+
+[[parameter]]
+name = "model"
+value = "sg13_lv_pmos"
+
+[[parameter]]
+name = "w"
+value = "0.15u"
+
+[[parameter]]
+name = "l"
+value = "0.13u"
+
+[[parameter]]
+name = "m"
+value = "1"

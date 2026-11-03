@@ -27,7 +27,9 @@ ice-pkg resolve <repository> 0.1.0 ihp.sg13g2=0.1.0
 The package ships TOML sidecar definitions under `symbols/` for NMOS, PMOS, NPN
 HBT, and MIM capacitor devices. Their `artwork` fields reference ICE's built-in
 SchematicSymbolsSVG artwork with `generic:<file>.svg`, so the package does not
-duplicate SVG files. See `symbols/ATTRIBUTION.md` and ICE's
+duplicate SVG files. The MOS symbols seed `model`, `w`, `l`, and `m` defaults;
+the NPN seeds `model` and `m`; the MIM capacitor seeds `model`,
+`capacitance`, `w`, `l`, and `m`. See `symbols/ATTRIBUTION.md` and ICE's
 `symbols/ATTRIBUTION.md` for source attribution.
 
 ## Procedural layout dummy fill
