@@ -1,0 +1,95 @@
+{
+  "format": "ice-device-extraction",
+  "schema_version": 1,
+  "pdk": "ihp-sg13g2",
+  "devices": [
+    {
+      "name": "nmos_hv",
+      "type": "mos",
+      "model": "sg13_hv_nmos",
+      "element": "X",
+      "active": "Activ",
+      "gate": "GatPoly",
+      "require_layers": [
+        "ThickGateOx"
+      ],
+      "exclude_layers": [
+        "NWell"
+      ],
+      "terminal_layers": [
+        "Contact"
+      ],
+      "substrate": "0",
+      "length_axis": "auto"
+    },
+    {
+      "name": "pmos_hv",
+      "type": "mos",
+      "model": "sg13_hv_pmos",
+      "element": "X",
+      "active": "Activ",
+      "gate": "GatPoly",
+      "require_layers": [
+        "NWell",
+        "ThickGateOx"
+      ],
+      "body_layer": "NWell",
+      "terminal_layers": [
+        "Contact"
+      ],
+      "substrate": "0",
+      "length_axis": "auto"
+    },
+    {
+      "name": "nmos",
+      "type": "mos",
+      "model": "sg13_lv_nmos",
+      "element": "X",
+      "active": "Activ",
+      "gate": "GatPoly",
+      "exclude_layers": [
+        "NWell",
+        "ThickGateOx"
+      ],
+      "terminal_layers": [
+        "Contact"
+      ],
+      "substrate": "0",
+      "length_axis": "auto"
+    },
+    {
+      "name": "pmos",
+      "type": "mos",
+      "model": "sg13_lv_pmos",
+      "element": "X",
+      "active": "Activ",
+      "gate": "GatPoly",
+      "require_layers": [
+        "NWell"
+      ],
+      "exclude_layers": [
+        "ThickGateOx"
+      ],
+      "body_layer": "NWell",
+      "terminal_layers": [
+        "Contact"
+      ],
+      "substrate": "0",
+      "length_axis": "auto"
+    },
+    {
+      "name": "cmim",
+      "type": "capacitor",
+      "model": "cap_cmim",
+      "element": "C",
+      "plates": [
+        "TopMetal1",
+        "Metal5"
+      ],
+      "require_layers": [
+        "MIM"
+      ],
+      "capacitance_per_area": 1.5
+    }
+  ]
+}

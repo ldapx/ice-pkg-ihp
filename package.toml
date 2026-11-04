@@ -85,6 +85,10 @@ name = "PWell"
 number = 46
 
 [[pdk.layer]]
+name = "ThickGateOx"
+number = 44
+
+[[pdk.layer]]
 name = "Contact"
 number = 6
 
