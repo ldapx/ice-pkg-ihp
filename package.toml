@@ -71,87 +71,109 @@ output = "cap_cmomf.osdi"
 [[pdk.layer]]
 name = "Activ"
 number = 1
+minimum_width = 150
 
 [[pdk.layer]]
 name = "GatPoly"
 number = 5
+minimum_width = 130
 
 [[pdk.layer]]
 name = "NWell"
 number = 31
+minimum_width = 620
 
 [[pdk.layer]]
 name = "PWell"
 number = 46
+minimum_width = 620
 
 [[pdk.layer]]
 name = "ThickGateOx"
 number = 44
+minimum_width = 860
 
 [[pdk.layer]]
 name = "Contact"
 number = 6
+minimum_width = 160
 
 [[pdk.layer]]
 name = "Metal1"
 number = 8
+minimum_width = 160
 
 [[pdk.layer]]
 name = "Via1"
 number = 19
+minimum_width = 190
 
 [[pdk.layer]]
 name = "Metal2"
 number = 10
+minimum_width = 200
 
 [[pdk.layer]]
 name = "Via2"
 number = 29
+minimum_width = 190
 
 [[pdk.layer]]
 name = "Metal3"
 number = 30
+minimum_width = 200
 
 [[pdk.layer]]
 name = "MIM"
 number = 36
+minimum_width = 1140
 
 [[pdk.layer]]
 name = "Vmim"
 number = 129
+minimum_width = 420
 
 [[pdk.layer]]
 name = "Via3"
 number = 49
+minimum_width = 190
 
 [[pdk.layer]]
 name = "Metal4"
 number = 50
+minimum_width = 200
 
 [[pdk.layer]]
 name = "Via4"
 number = 66
+minimum_width = 190
 
 [[pdk.layer]]
 name = "Metal5"
 number = 67
+minimum_width = 200
 
 [[pdk.layer]]
 name = "TopVia1"
 number = 125
+minimum_width = 420
 
 [[pdk.layer]]
 name = "TopMetal1"
 number = 126
+minimum_width = 1640
 
 [[pdk.layer]]
 name = "TopVia2"
 number = 133
+minimum_width = 900
 
 [[pdk.layer]]
 name = "TopMetal2"
 number = 134
+minimum_width = 2000
 
 [[pdk.layer]]
 name = "dfpad"
 number = 41
+minimum_width = 30000
