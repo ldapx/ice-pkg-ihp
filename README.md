@@ -5,9 +5,10 @@ This package definition installs the upstream IHP Open Source PDK:
 <https://github.com/IHP-GmbH/IHP-Open-PDK>
 
 This package contains the simulation subset of the upstream IHP PDK
-(`libs.tech/ngspice/models` and the Verilog-A sources under `pdk/verilog-a`).
-Simulation depends only on this ICE package, not on Volare, CIEL, `PDK_ROOT`,
-or a global `~/.spiceinit`.
+(`libs.tech/ngspice/models` and the Verilog-A sources under `pdk/verilog-a`)
+and the `sg13g2_stdcell` implementation set under `implementation/`.
+Simulation and physical implementation depend only on this ICE package, not on
+Volare, CIEL, `PDK_ROOT`, or a global `~/.spiceinit`.
 
 Install it into a local package repository with:
 
@@ -56,11 +57,11 @@ space.
 
 ## Layout device library and PCells
 
-The package ships the complete IHP layout device library as
-`layout/devices.json`, containing the flattened reference geometry and the
-parametric PCell definitions used by the ICE Devices panel. The IHP PyCell
-sources are vendored under `upstream/ihp`, so parametric regeneration no longer
-requires an external IHP checkout or `ICE_IHP_ROOT`.
+The package ships the complete IHP layout device library as one layout cell per
+device under `layout/devices/*.icelay`. `layout/devices.json` indexes them for
+the ICE Devices panel and carries the parametric PCell definitions. The IHP
+PyCell sources are vendored under `upstream/ihp`, so parametric regeneration no
+longer requires an external IHP checkout or `ICE_IHP_ROOT`.
 
 Layout devices are regenerated through `layout/device_generator.py`. The script
 uses `icepy.pcells`, the PCell runtime shipped with ICE's optional Python
@@ -82,6 +83,24 @@ exercised directly:
 python layout/device_generator.py --pdk-root . \
   --module nmos_code --class nmos --params-file params.json --output geometry.json
 ```
+
+## Physical implementation
+
+`package.toml` declares explicit implementation data for the SG13G2 standard
+cells:
+
+- `implementation/lef/` — technology LEF and merged cell LEF;
+- `implementation/lib/` — typical, fast, and slow Liberty at both the 1.2 V
+  and 1.5 V core supply points;
+- `implementation/gds/` — merged standard-cell GDS and the KLayout DEF-to-GDS
+  layer map;
+- `implementation/rcx/` — OpenRCX extraction rules;
+- `implementation/pdn.tcl` — best-effort power-grid hook used during floorplan.
+
+The placement site is `CoreSite`; signal routing uses `Metal1` through
+`Metal5`. The Liberty corner ids are `tt`, `ff`, and `ss` for the 1.2 V core,
+and `tt_1p50`, `ff_1p65`, and `ss_1p35` for the 1.5 V core. The default corner
+is `tt` (typical 1.2 V, 25 °C). No external PDK installation is needed.
 
 ## Simulation
 

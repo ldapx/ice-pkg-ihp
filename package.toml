@@ -18,6 +18,7 @@ layout = true
 dummy_fill = true
 pcells = true
 verification = true
+implementation = true
 
 [trust]
 trusted = false
@@ -28,6 +29,128 @@ default_schematic = "ihp_top"
 
 id = "ihp-sg13g2"
 aliases = ["ihp.sg13g2"]
+
+[[pdk.layer]]
+name = "Metal1.pin"
+number = 8
+datatype = 2
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal1.text"
+number = 8
+datatype = 25
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal2.pin"
+number = 10
+datatype = 2
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal2.text"
+number = 10
+datatype = 25
+minimum_width = 0
+
+[[pdk.layer]]
+name = "pSD.drawing"
+number = 14
+datatype = 0
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal3.pin"
+number = 30
+datatype = 2
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal3.text"
+number = 30
+datatype = 25
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal4.pin"
+number = 50
+datatype = 2
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal4.text"
+number = 50
+datatype = 25
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal5.pin"
+number = 67
+datatype = 2
+minimum_width = 0
+
+[[pdk.layer]]
+name = "Metal5.text"
+number = 67
+datatype = 25
+minimum_width = 0
+
+[[pdk.layer]]
+name = "TopMetal1.pin"
+number = 126
+datatype = 2
+minimum_width = 0
+
+[[pdk.layer]]
+name = "TopMetal1.text"
+number = 126
+datatype = 25
+minimum_width = 0
+
+[[pdk.layer]]
+name = "TopMetal2.pin"
+number = 134
+datatype = 2
+minimum_width = 0
+
+[[pdk.layer]]
+name = "TopMetal2.text"
+number = 134
+datatype = 25
+minimum_width = 0
+
+[[pdk.layer]]
+name = "prBoundary.boundary"
+number = 189
+datatype = 4
+minimum_width = 0
+
+[pdk.implementation]
+engine = "openroad"
+synthesis = "yosys"
+min_openroad = "2.0"
+min_yosys = "0.40"
+site = "CoreSite"
+tech_lef = "implementation/lef/sg13g2_tech.lef"
+cell_lef = "implementation/lef/sg13g2_stdcell.lef"
+gds = "implementation/gds/sg13g2_stdcell.gds"
+layer_map = "implementation/gds/sg13g2.map"
+io_horizontal_layers = ["Metal3"]
+io_vertical_layers = ["Metal2"]
+routing_min_layer = "Metal1"
+routing_max_layer = "Metal5"
+pdn_script = "implementation/pdn.tcl"
+fill_cells = ["sg13g2_fill_8", "sg13g2_fill_4", "sg13g2_fill_2", "sg13g2_fill_1"]
+rcx_rules = "implementation/rcx/IHP_rcx_patterns.rules"
+
+[pdk.implementation.liberty]
+tt = ["implementation/lib/sg13g2_stdcell_typ_1p20V_25C.lib"]
+ff = ["implementation/lib/sg13g2_stdcell_fast_1p32V_m40C.lib"]
+ss = ["implementation/lib/sg13g2_stdcell_slow_1p08V_125C.lib"]
+tt_1p50 = ["implementation/lib/sg13g2_stdcell_typ_1p50V_25C.lib"]
+ff_1p65 = ["implementation/lib/sg13g2_stdcell_fast_1p65V_m40C.lib"]
+ss_1p35 = ["implementation/lib/sg13g2_stdcell_slow_1p35V_125C.lib"]
 
 [pdk.simulation]
 engine = "ngspice"

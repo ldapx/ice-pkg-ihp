@@ -640,6 +640,54 @@
       "color": "#316395",
       "pattern": "Diagonal \\",
       "visible": false
+    },
+    {
+      "name": "Metal1.text",
+      "color": "#3498db",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "Metal2.text",
+      "color": "#27ae60",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "Metal3.text",
+      "color": "#e67e22",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "Metal4.text",
+      "color": "#9b59b6",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "Metal5.text",
+      "color": "#e74c3c",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "TopMetal1.text",
+      "color": "#f39c12",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "TopMetal2.text",
+      "color": "#f1c40f",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "Metal4.pin",
+      "color": "#9b59b6",
+      "pattern": "Horizontal",
+      "visible": false
     }
   ]
 }
