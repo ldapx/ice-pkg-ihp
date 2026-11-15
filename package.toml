@@ -29,6 +29,7 @@ default_schematic = "ihp_top"
 
 id = "ihp-sg13g2"
 aliases = ["ihp.sg13g2"]
+manufacturing_grid = 5
 
 [[pdk.layer]]
 name = "Metal1.pin"
@@ -132,35 +133,35 @@ synthesis = "yosys"
 min_openroad = "2.0"
 min_yosys = "0.40"
 site = "CoreSite"
-tech_lef = "implementation/lef/sg13g2_tech.lef"
-cell_lef = "implementation/lef/sg13g2_stdcell.lef"
-gds = "implementation/gds/sg13g2_stdcell.gds"
-layer_map = "implementation/gds/sg13g2.map"
+tech_lef = "implementation/stacks/default/tech.lef"
+cell_lef = "implementation/common/cells.lef"
+gds = "implementation/common/stdcells.gds"
+layer_map = "implementation/common/layer.map"
 io_horizontal_layers = ["Metal3"]
 io_vertical_layers = ["Metal2"]
 routing_min_layer = "Metal1"
 routing_max_layer = "Metal5"
-pdn_script = "implementation/pdn.tcl"
+pdn_script = "implementation/common/scripts/pdn.tcl"
 fill_cells = ["sg13g2_fill_8", "sg13g2_fill_4", "sg13g2_fill_2", "sg13g2_fill_1"]
-rcx_rules = "implementation/rcx/IHP_rcx_patterns.rules"
+rcx_rules = "implementation/stacks/default/rcx.rules"
 
 [pdk.implementation.liberty]
-tt = ["implementation/lib/sg13g2_stdcell_typ_1p20V_25C.lib"]
-ff = ["implementation/lib/sg13g2_stdcell_fast_1p32V_m40C.lib"]
-ss = ["implementation/lib/sg13g2_stdcell_slow_1p08V_125C.lib"]
-tt_1p50 = ["implementation/lib/sg13g2_stdcell_typ_1p50V_25C.lib"]
-ff_1p65 = ["implementation/lib/sg13g2_stdcell_fast_1p65V_m40C.lib"]
-ss_1p35 = ["implementation/lib/sg13g2_stdcell_slow_1p35V_125C.lib"]
+tt = ["implementation/common/lib/sg13g2_stdcell_typ_1p20V_25C.lib.gz"]
+ff = ["implementation/common/lib/sg13g2_stdcell_fast_1p32V_m40C.lib.gz"]
+ss = ["implementation/common/lib/sg13g2_stdcell_slow_1p08V_125C.lib.gz"]
+tt_1p50 = ["implementation/common/lib/sg13g2_stdcell_typ_1p50V_25C.lib.gz"]
+ff_1p65 = ["implementation/common/lib/sg13g2_stdcell_fast_1p65V_m40C.lib.gz"]
+ss_1p35 = ["implementation/common/lib/sg13g2_stdcell_slow_1p35V_125C.lib.gz"]
 
 [pdk.simulation]
 engine = "ngspice"
-root = "libs.tech/ngspice"
+root = "simulation/ngspice"
 model_file = "models/cornerMOSlv.lib"
 section = "mos_tt"
 includes = []
 options = []
 requires_osdi = true
-verilog_a = "pdk/verilog-a"
+verilog_a = "simulation/verilog-a"
 compiler_flags = ["-D__NGSPICE__"]
 
 [pdk.simulation.devices]
@@ -168,27 +169,27 @@ nmos = "sg13_lv_nmos"
 pmos = "sg13_lv_pmos"
 
 [[pdk.simulation.osdi]]
-source = "pdk/verilog-a/psp103/psp103.va"
+source = "simulation/verilog-a/psp103/psp103.va"
 output = "psp103.osdi"
 
 [[pdk.simulation.osdi]]
-source = "pdk/verilog-a/psp103/psp103_nqs.va"
+source = "simulation/verilog-a/psp103/psp103_nqs.va"
 output = "psp103_nqs.osdi"
 
 [[pdk.simulation.osdi]]
-source = "pdk/verilog-a/r3_cmc/r3_cmc.va"
+source = "simulation/verilog-a/r3_cmc/r3_cmc.va"
 output = "r3_cmc.osdi"
 
 [[pdk.simulation.osdi]]
-source = "pdk/verilog-a/mosvar/mosvar.va"
+source = "simulation/verilog-a/mosvar/mosvar.va"
 output = "mosvar.osdi"
 
 [[pdk.simulation.osdi]]
-source = "pdk/verilog-a/cap_cmomi/cap_cmomi.va"
+source = "simulation/verilog-a/cap_cmomi/cap_cmomi.va"
 output = "cap_cmomi.osdi"
 
 [[pdk.simulation.osdi]]
-source = "pdk/verilog-a/cap_cmomf/cap_cmomf.va"
+source = "simulation/verilog-a/cap_cmomf/cap_cmomf.va"
 output = "cap_cmomf.osdi"
 
 [[pdk.layer]]

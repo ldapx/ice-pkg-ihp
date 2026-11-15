@@ -3,7 +3,7 @@ ice.lock
 .ice/
 
 # The IHP PyCell sources required by parametric PCells are vendored under
-# upstream/ihp so the package is self-contained. Generated build content stays
+# vendor/ihp so the package is self-contained. Generated build content stays
 # ignored.
 build/
 dist/

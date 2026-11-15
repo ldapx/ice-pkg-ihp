@@ -5,8 +5,9 @@ This package definition installs the upstream IHP Open Source PDK:
 <https://github.com/IHP-GmbH/IHP-Open-PDK>
 
 This package contains the simulation subset of the upstream IHP PDK
-(`libs.tech/ngspice/models` and the Verilog-A sources under `pdk/verilog-a`)
-and the `sg13g2_stdcell` implementation set under `implementation/`.
+(`simulation/ngspice/models` and the Verilog-A sources under
+`simulation/verilog-a`) and the `sg13g2_stdcell` implementation set under
+`implementation/`.
 Simulation and physical implementation depend only on this ICE package, not on
 Volare, CIEL, `PDK_ROOT`, or a global `~/.spiceinit`.
 
@@ -22,6 +23,11 @@ Then resolve it from a project:
 ```text
 ice-pkg resolve <repository> 0.1.0 ihp.sg13g2=0.1.0
 ```
+
+## PDK metadata
+
+The package declares a 5 nm manufacturing grid (`manufacturing_grid = 5`).
+ICE uses it as the default layout grid for new layouts.
 
 ## Schematic symbols
 
@@ -57,13 +63,14 @@ space.
 
 ## Layout device library and PCells
 
-The package ships the complete IHP layout device library as one layout cell per
-device under `layout/devices/*.icelay`. `layout/devices.json` indexes them for
-the ICE Devices panel and carries the parametric PCell definitions. The IHP
-PyCell sources are vendored under `upstream/ihp`, so parametric regeneration no
-longer requires an external IHP checkout or `ICE_IHP_ROOT`.
+The package ships the complete IHP layout device library.
+`layout/devices/index.json` indexes it for the ICE Devices panel. The 26
+parameterized devices are Python PCells, driven by
+`layout/devices/generator.py` and the vendored IHP PyCell sources under
+`vendor/ihp`; they have no stored geometry snapshot. The 116 fixed devices are
+stored as `layout/devices/fixed/*.icelay`.
 
-Layout devices are regenerated through `layout/device_generator.py`. The script
+Layout devices are regenerated through `layout/devices/generator.py`. The script
 uses `icepy.pcells`, the PCell runtime shipped with ICE's optional Python
 bindings, evaluates the vendored IHP PyCell implementation through ICE's CNI
 compatibility layer, and transfers the resulting polygons into an `icepy` layout
@@ -80,7 +87,7 @@ The GUI supplies this path automatically. A device generator can then be
 exercised directly:
 
 ```text
-python layout/device_generator.py --pdk-root . \
+python layout/devices/generator.py --pdk-root . \
   --module nmos_code --class nmos --params-file params.json --output geometry.json
 ```
 
@@ -89,13 +96,15 @@ python layout/device_generator.py --pdk-root . \
 `package.toml` declares explicit implementation data for the SG13G2 standard
 cells:
 
-- `implementation/lef/` — technology LEF and merged cell LEF;
-- `implementation/lib/` — typical, fast, and slow Liberty at both the 1.2 V
-  and 1.5 V core supply points;
-- `implementation/gds/` — merged standard-cell GDS and the KLayout DEF-to-GDS
-  layer map;
-- `implementation/rcx/` — OpenRCX extraction rules;
-- `implementation/pdn.tcl` — best-effort power-grid hook used during floorplan.
+- `implementation/common/cells.lef` — merged cell LEF;
+- `implementation/common/lib/` — typical, fast, and slow Liberty at both the
+  1.2 V and 1.5 V core supply points (gzip-compressed);
+- `implementation/common/stdcells.gds` — merged standard-cell GDS;
+- `implementation/common/layer.map` — KLayout DEF-to-GDS layer map;
+- `implementation/common/scripts/pdn.tcl` — best-effort power-grid hook used
+  during floorplan;
+- `implementation/stacks/default/tech.lef` and `rcx.rules` — technology LEF and
+  OpenRCX extraction rules.
 
 The placement site is `CoreSite`; signal routing uses `Metal1` through
 `Metal5`. The Liberty corner ids are `tt`, `ff`, and `ss` for the 1.2 V core,
