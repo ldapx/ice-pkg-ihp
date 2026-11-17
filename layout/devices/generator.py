@@ -39,7 +39,7 @@ def _vendored_ihp_root(argv: list[str]) -> Path | None:
 
 def main() -> int:
     try:
-        from icepy import pcells
+        import icepy  # noqa: F401  (the runtime needs the bindings)
     except ImportError as error:
         print(
             "The IHP device generator requires the ICE icepy Python module. "
@@ -48,11 +48,14 @@ def main() -> int:
         )
         return 2
 
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "pcell"))
+    from ihp_runtime import main_cli
+
     arguments = list(sys.argv[1:])
     vendored = _vendored_ihp_root(arguments)
     if vendored is not None and "--ihp-root" not in arguments:
         arguments.extend(["--ihp-root", str(vendored)])
-    return pcells.main_cli(arguments)
+    return main_cli(arguments)
 
 
 if __name__ == "__main__":

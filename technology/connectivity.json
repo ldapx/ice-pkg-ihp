@@ -1,0 +1,212 @@
+{
+  "format": "ice-pdk-connectivity",
+  "schema_version": 1,
+  "layers": [
+    {
+      "name": "activ",
+      "role": "active"
+    },
+    {
+      "name": "gatpoly",
+      "role": "gate"
+    },
+    {
+      "name": "metal1",
+      "role": "conductor"
+    },
+    {
+      "name": "metal2",
+      "role": "conductor"
+    },
+    {
+      "name": "metal3",
+      "role": "conductor"
+    },
+    {
+      "name": "metal4",
+      "role": "conductor"
+    },
+    {
+      "name": "metal5",
+      "role": "conductor"
+    },
+    {
+      "name": "topmetal1",
+      "role": "conductor"
+    },
+    {
+      "name": "topmetal2",
+      "role": "conductor"
+    },
+    {
+      "name": "dfpad",
+      "role": "conductor"
+    },
+    {
+      "name": "contact",
+      "role": "via"
+    },
+    {
+      "name": "via1",
+      "role": "via"
+    },
+    {
+      "name": "via2",
+      "role": "via"
+    },
+    {
+      "name": "via3",
+      "role": "via"
+    },
+    {
+      "name": "via4",
+      "role": "via"
+    },
+    {
+      "name": "topvia1",
+      "role": "via"
+    },
+    {
+      "name": "topvia2",
+      "role": "via"
+    },
+    {
+      "name": "vmim",
+      "role": "via"
+    },
+    {
+      "name": "nwell",
+      "role": "marker"
+    },
+    {
+      "name": "pwell",
+      "role": "marker"
+    },
+    {
+      "name": "thickgateox",
+      "role": "marker"
+    },
+    {
+      "name": "mim",
+      "role": "marker"
+    },
+    {
+      "name": "psd",
+      "role": "marker"
+    },
+    {
+      "name": "nsd",
+      "role": "marker"
+    },
+    {
+      "name": "prboundary",
+      "role": "marker"
+    },
+    {
+      "name": "polyres",
+      "role": "marker"
+    }
+  ],
+  "vias": [
+    {
+      "name": "contact",
+      "lower": [
+        "activ",
+        "gatpoly"
+      ],
+      "upper": [
+        "metal1"
+      ],
+      "size": 160,
+      "enclosure": 60
+    },
+    {
+      "name": "via1",
+      "lower": [
+        "metal1"
+      ],
+      "upper": [
+        "metal2"
+      ],
+      "size": 190,
+      "enclosure": 60
+    },
+    {
+      "name": "via2",
+      "lower": [
+        "metal2"
+      ],
+      "upper": [
+        "metal3"
+      ],
+      "size": 190,
+      "enclosure": 60
+    },
+    {
+      "name": "via3",
+      "lower": [
+        "metal3"
+      ],
+      "upper": [
+        "metal4"
+      ],
+      "size": 190,
+      "enclosure": 60
+    },
+    {
+      "name": "via4",
+      "lower": [
+        "metal4"
+      ],
+      "upper": [
+        "metal5"
+      ],
+      "size": 190,
+      "enclosure": 60
+    },
+    {
+      "name": "topvia1",
+      "lower": [
+        "metal5"
+      ],
+      "upper": [
+        "topmetal1"
+      ],
+      "size": 420,
+      "enclosure": 100
+    },
+    {
+      "name": "topvia2",
+      "lower": [
+        "topmetal1"
+      ],
+      "upper": [
+        "topmetal2"
+      ],
+      "size": 420,
+      "enclosure": 100
+    },
+    {
+      "name": "vmim",
+      "lower": [
+        "metal5"
+      ],
+      "upper": [
+        "mim"
+      ],
+      "size": 420,
+      "enclosure": 100
+    }
+  ],
+  "routing": {
+    "stack": [
+      "metal1",
+      "metal2",
+      "metal3",
+      "metal4",
+      "metal5",
+      "topmetal1",
+      "topmetal2"
+    ]
+  }
+}

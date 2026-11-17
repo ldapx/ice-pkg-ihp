@@ -168,6 +168,12 @@ compiler_flags = ["-D__NGSPICE__"]
 nmos = "sg13_lv_nmos"
 pmos = "sg13_lv_pmos"
 
+[pdk.simulation.probe]
+w = "1u"
+l = "0.13u"
+vdd = 1.2
+vd = 0.6
+
 [[pdk.simulation.osdi]]
 source = "simulation/verilog-a/psp103/psp103.va"
 output = "psp103.osdi"

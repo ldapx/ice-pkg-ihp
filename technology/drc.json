@@ -1,0 +1,7 @@
+{
+  "format": "ice-drc",
+  "schema_version": 1,
+  "engine": "gdscheck",
+  "name": "IHP SG13G2 gdscheck",
+  "process": "ihp-sg13g2"
+}

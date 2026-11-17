@@ -71,10 +71,11 @@ parameterized devices are Python PCells, driven by
 stored as `layout/devices/fixed/*.icelay`.
 
 Layout devices are regenerated through `layout/devices/generator.py`. The script
-uses `icepy.pcells`, the PCell runtime shipped with ICE's optional Python
-bindings, evaluates the vendored IHP PyCell implementation through ICE's CNI
-compatibility layer, and transfers the resulting polygons into an `icepy` layout
-cell.
+uses the package-owned `layout/devices/pcell/ihp_runtime.py` bridge, evaluates
+the vendored IHP PyCell implementation through its CNI compatibility layer, and
+transfers the resulting polygons and pins into an `icepy` layout cell. ICE's
+`icepy.pcells` module is technology-neutral; no IHP-specific runtime code lives
+in the ICE repository.
 
 Build and expose the Python bindings with:
 
