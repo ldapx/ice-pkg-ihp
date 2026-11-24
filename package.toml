@@ -1,7 +1,7 @@
 [package]
 schema_version = 1
 name = "ihp.sg13g2"
-version = "0.1.0"
+version = "0.1.1"
 description = "IHP SG13G2 130 nm BiCMOS open-source PDK"
 license = "Apache-2.0"
 

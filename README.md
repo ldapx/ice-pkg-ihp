@@ -14,14 +14,14 @@ Volare, CIEL, `PDK_ROOT`, or a global `~/.spiceinit`.
 Install it into a local package repository with:
 
 ```text
-ice-pkg install <repository> ihp.sg13g2 0.1.0 \
+ice-pkg install <repository> ihp.sg13g2 0.1.1 \
   https://github.com/IHP-GmbH/IHP-Open-PDK.git main
 ```
 
 Then resolve it from a project:
 
 ```text
-ice-pkg resolve <repository> 0.1.0 ihp.sg13g2=0.1.0
+ice-pkg resolve <repository> 0.1.1 ihp.sg13g2=0.1.1
 ```
 
 ## PDK metadata
@@ -76,6 +76,11 @@ the vendored IHP PyCell implementation through its CNI compatibility layer, and
 transfers the resulting polygons and pins into an `icepy` layout cell. ICE's
 `icepy.pcells` module is technology-neutral; no IHP-specific runtime code lives
 in the ICE repository.
+
+The IHP NMOS PyCells expose D/G/S only because the substrate is global, while
+the SPICE model and schematic symbol have a fourth bulk terminal. The runtime
+adds that B terminal as a marker port on the `Substrate` layer so LVS compares
+the same four-node device on both sides. PMOS PyCells already declare B.
 
 Build and expose the Python bindings with:
 

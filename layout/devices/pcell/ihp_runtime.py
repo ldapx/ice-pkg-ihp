@@ -314,7 +314,47 @@ def _pin_direction(name: str) -> str:
     return "inout"
 
 
-def _extract_ihp_ports(wrapper, cell, tech) -> list[dict]:
+def _synthetic_bulk_port(cell, tech, bounds) -> dict | None:
+    """Create the implicit substrate terminal for NMOS-style PyCells.
+
+    The IHP NMOS PyCell exposes D/G/S only, while its SPICE model and schematic
+    symbol have a fourth bulk terminal. The substrate is global in the layout,
+    so the package exposes B as a marker port on the Substrate layer. PMOS
+    PyCells already declare their own B pin.
+    """
+    stream = tech.stream_layers().get("Substrate")
+    if stream is None:
+        return None
+    layer_number, datatype = stream
+    box = cell.bbox()
+    if box is None:
+        return None
+    size = 300
+    left = int(round(box.left))
+    right = int(round(box.right))
+    bottom = int(round(box.bottom))
+    top = int(round(box.top))
+    x = max(left, right - size)
+    y = bottom
+    width = min(size, right - x)
+    height = min(size, top - y)
+    if width <= 0 or height <= 0:
+        return None
+    rectangle = {"x": x, "y": y, "width": width, "height": height}
+    if bounds is None:
+        bounds = (left, bottom, right, top)
+    return {
+        "name": "B",
+        "layer": int(layer_number),
+        "datatype": int(datatype),
+        "rectangle": rectangle,
+        "direction": "input",
+        "side": _pin_side(rectangle, bounds),
+        "label": "B",
+    }
+
+
+def _extract_ihp_ports(wrapper, cell, tech, module_name: str = "") -> list[dict]:
     """Read terminal pins from the IHP PyCell cell context."""
     implementation = getattr(wrapper, "_impl", None)
     contexts = getattr(implementation, "_cellContexts", {}) if implementation else {}
@@ -377,6 +417,10 @@ def _extract_ihp_ports(wrapper, cell, tech) -> list[dict]:
             }
         )
         seen.add(name)
+    if "mos" in module_name.lower() and not any(port["name"] == "B" for port in ports):
+        bulk = _synthetic_bulk_port(cell, tech, bounds)
+        if bulk is not None:
+            ports.append(bulk)
     return ports
 
 
@@ -414,7 +458,7 @@ def generate_cell(
         builder.layer(layer, polygon["number"], polygon["datatype"])
         points = [make_point(x, y) for x, y in polygon["points"]]
         builder.polygon(layer, points)
-    for port in _extract_ihp_ports(wrapper, pya_cell, tech):
+    for port in _extract_ihp_ports(wrapper, pya_cell, tech, module_name):
         layer = _layer_name(reverse, port["layer"], port["datatype"])
         builder.layer(layer, port["layer"], port["datatype"])
         rectangle = port["rectangle"]
@@ -524,6 +568,7 @@ def parameter_specs_for(ihp_root: str | Path | None, module_name: str, class_nam
     wrapper = create_wrapper(tech, module_name, class_name)
     return parameter_specs(wrapper)
 
+
 def port_direction_text(direction) -> str:
     return str(direction).split(".")[-1]
 
@@ -570,6 +615,7 @@ def main_cli(argv: list[str] | None = None) -> int:
     except Exception as error:  # noqa: BLE001 - CLI boundary
         print(f"IHP PCell generation failed: {error}", file=sys.stderr)
         return 1
+
 
 __all__ = [
     "DEFAULT_PDK",
