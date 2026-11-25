@@ -90,6 +90,40 @@
         "MIM"
       ],
       "capacitance_per_area": 1.5
+    },
+    {
+      "name": "rhigh",
+      "type": "resistor",
+      "model": "res_rhigh",
+      "element": "R",
+      "body": "PolyRes",
+      "require_layers": [
+        "nSD",
+        "pSD"
+      ],
+      "terminal_layers": [
+        "GatPoly"
+      ],
+      "sheet_resistance": 1300.0,
+      "terminal_overlap": "touch"
+    },
+    {
+      "name": "rppd",
+      "type": "resistor",
+      "model": "res_rppd",
+      "element": "R",
+      "body": "PolyRes",
+      "require_layers": [
+        "pSD"
+      ],
+      "exclude_layers": [
+        "nSD"
+      ],
+      "terminal_layers": [
+        "GatPoly"
+      ],
+      "sheet_resistance": 260.0,
+      "terminal_overlap": "touch"
     }
   ]
 }
