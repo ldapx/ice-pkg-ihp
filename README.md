@@ -8,46 +8,46 @@ This package contains the simulation subset of the upstream IHP PDK
 (`simulation/ngspice/models` and the Verilog-A sources under
 `simulation/verilog-a`) and the `sg13g2_stdcell` implementation set under
 `implementation/`.
-Simulation and physical implementation depend only on this ICE package, not on
+Simulation and physical implementation depend only on this OpenVLSI package, not on
 Volare, CIEL, `PDK_ROOT`, or a global `~/.spiceinit`.
 
 Install it into a local package repository with:
 
 ```text
-ice-pkg install <repository> ihp.sg13g2 0.1.1 \
+openvlsi-pkg install <repository> ihp.sg13g2 0.1.1 \
   https://github.com/IHP-GmbH/IHP-Open-PDK.git main
 ```
 
 Then resolve it from a project:
 
 ```text
-ice-pkg resolve <repository> 0.1.1 ihp.sg13g2=0.1.1
+openvlsi-pkg resolve <repository> 0.1.1 ihp.sg13g2=0.1.1
 ```
 
 ## PDK metadata
 
 The package declares a 5 nm manufacturing grid (`manufacturing_grid = 5`).
-ICE uses it as the default layout grid for new layouts.
+OpenVLSI uses it as the default layout grid for new layouts.
 
 ## Schematic symbols
 
 The package ships TOML sidecar definitions under `symbols/` for NMOS, PMOS, NPN
-HBT, and MIM capacitor devices. Their `artwork` fields reference ICE's built-in
+HBT, and MIM capacitor devices. Their `artwork` fields reference OpenVLSI's built-in
 SchematicSymbolsSVG artwork with `generic:<file>.svg`, so the package does not
 duplicate SVG files. The MOS symbols seed `model`, `w`, `l`, and `m` defaults;
 the NPN seeds `model` and `m`; the MIM capacitor seeds `model`,
-`capacitance`, `w`, `l`, and `m`. See `symbols/ATTRIBUTION.md` and ICE's
+`capacitance`, `w`, `l`, and `m`. See `symbols/ATTRIBUTION.md` and OpenVLSI's
 `symbols/ATTRIBUTION.md` for source attribution.
 
 ## Procedural layout dummy fill
 
-ICE procedural layouts can call the PDK-provided dummy metal fill implementation:
+OpenVLSI procedural layouts can call the PDK-provided dummy metal fill implementation:
 
 ```python
 layout.add_dummy_fill(layers=["Metal1", "Metal2"], density=50, deviation=10)
 ```
 
-The implementation lives in `layout/dummy_fill.py`. ICE loads it only when a
+The implementation lives in `layout/dummy_fill.py`. OpenVLSI loads it only when a
 script requests dummy fill and exposes it through the generic
 `layout.add_dummy_fill(...)` API. The IHP implementation uses the square-fill
 rules from the open-source `gdsfill` project for Metal1-5 and TopMetal1-2. It
@@ -64,18 +64,18 @@ space.
 ## Layout device library and PCells
 
 The package ships the complete IHP layout device library.
-`layout/devices/index.json` indexes it for the ICE Devices panel. The 26
+`layout/devices/index.json` indexes it for the OpenVLSI Devices panel. The 26
 parameterized devices are Python PCells, driven by
 `layout/devices/generator.py` and the vendored IHP PyCell sources under
 `vendor/ihp`; they have no stored geometry snapshot. The 116 fixed devices are
-stored as `layout/devices/fixed/*.icelay`.
+stored as `layout/devices/fixed/*.ovlay`.
 
 Layout devices are regenerated through `layout/devices/generator.py`. The script
 uses the package-owned `layout/devices/pcell/ihp_runtime.py` bridge, evaluates
 the vendored IHP PyCell implementation through its CNI compatibility layer, and
-transfers the resulting polygons and pins into an `icepy` layout cell. ICE's
-`icepy.pcells` module is technology-neutral; no IHP-specific runtime code lives
-in the ICE repository.
+transfers the resulting polygons and pins into an `openvlsipy` layout cell. OpenVLSI's
+`openvlsipy.pcells` module is technology-neutral; no IHP-specific runtime code lives
+in the OpenVLSI repository.
 
 The IHP NMOS PyCells expose D/G/S only because the substrate is global, while
 the SPICE model and schematic symbol have a fourth bulk terminal. The runtime
@@ -85,8 +85,8 @@ the same four-node device on both sides. PMOS PyCells already declare B.
 Build and expose the Python bindings with:
 
 ```text
-xmake build icepy
-export PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python
+xmake build openvlsipy
+export PYTHONPATH=<openvlsi>/build/linux/x86_64/release:<openvlsi>/python
 ```
 
 The GUI supplies this path automatically. A device generator can then be
@@ -123,7 +123,7 @@ The package declares `[pdk.simulation]` and `[pdk.simulation.osdi]` in
 `package.toml`. Build the OSDI cache once with:
 
 ```text
-ice-pkg pdk-build ihp.sg13g2
+openvlsi-pkg pdk-build ihp.sg13g2
 ```
 
-Verify it with `ice-cli pdk-info ihp-sg13g2 --probe`.
+Verify it with `openvlsi-cli pdk-info ihp-sg13g2 --probe`.

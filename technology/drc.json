@@ -1,5 +1,5 @@
 {
-  "format": "ice-drc",
+  "format": "openvlsi-drc",
   "schema_version": 1,
   "engine": "gdscheck",
   "name": "IHP SG13G2 gdscheck",

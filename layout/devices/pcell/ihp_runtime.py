@@ -2,11 +2,11 @@
 
 The upstream IHP PyCell implementations live under the package's vendored
 ``vendor/ihp`` tree. This module bootstraps the pure-Python CNI/PyCell layer,
-evaluates a PCell, and transfers its polygons and pins into an ``icepy``
+evaluates a PCell, and transfers its polygons and pins into an ``openvlsipy``
 project cell.
 
-ICE invokes this runtime through ``layout/devices/generator.py``; no
-IHP-specific code is required in the ICE repository.
+OpenVLSI invokes this runtime through ``layout/devices/generator.py``; no
+IHP-specific code is required in the OpenVLSI repository.
 """
 
 from __future__ import annotations
@@ -111,7 +111,7 @@ def find_ihp_root(explicit: str | None = None) -> Path:
     candidates: list[Path] = []
     if explicit:
         candidates.append(Path(explicit))
-    env = os.environ.get("ICE_IHP_ROOT")
+    env = os.environ.get("OPENVLSI_IHP_ROOT")
     if env:
         candidates.append(Path(env))
     script_dir = Path(__file__).resolve().parent
@@ -130,7 +130,7 @@ def find_ihp_root(explicit: str | None = None) -> Path:
         ).is_dir():
             return candidate
     raise RuntimeError(
-        "IHP source root was not found. Set ICE_IHP_ROOT or pass --ihp-root "
+        "IHP source root was not found. Set OPENVLSI_IHP_ROOT or pass --ihp-root "
         "to a checkout containing cni/ and ihp/refs/ihp_pycell/."
     )
 
@@ -436,9 +436,9 @@ def generate_cell(
     library: bool = True,
     device: str | None = None,
 ):
-    """Generate one IHP PCell into an ``icepy.Project`` layout cell.
+    """Generate one IHP PCell into an ``openvlsipy.Project`` layout cell.
 
-    Returns the generated ``icepy.LayoutCell`` snapshot. The project keeps the
+    Returns the generated ``openvlsipy.LayoutCell`` snapshot. The project keeps the
     real cell and can save it normally.
     """
     root = find_ihp_root(str(ihp_root) if ihp_root else None)
@@ -477,9 +477,9 @@ def generate_cell(
 
 
 def make_point(x, y):
-    import icepy
+    import openvlsipy
 
-    return icepy.LayoutPoint(int(x), int(y))
+    return openvlsipy.LayoutPoint(int(x), int(y))
 
 
 def generate_geometry(
@@ -488,13 +488,13 @@ def generate_geometry(
     class_name: str,
     parameters: dict[str, str] | None = None,
 ) -> dict:
-    """Generate a PCell through ``icepy`` and return the legacy JSON geometry."""
-    import icepy
+    """Generate a PCell through ``openvlsipy`` and return the legacy JSON geometry."""
+    import openvlsipy
 
     root = find_ihp_root(str(ihp_root) if ihp_root else None)
     tech = bootstrap(root)
     stream_by_name = {str(name): value for name, value in tech.stream_layers().items()}
-    project = icepy.new_project(class_name)
+    project = openvlsipy.new_project(class_name)
     cell = generate_cell(
         project,
         class_name,
@@ -522,7 +522,7 @@ def generate_geometry(
         )
     if not shapes:
         raise RuntimeError(
-            "the PyCell produced no polygon geometry after transfer to icepy"
+            "the PyCell produced no polygon geometry after transfer to openvlsipy"
         )
     ports = []
     for port in cell.ports:

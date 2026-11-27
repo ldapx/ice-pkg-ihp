@@ -1,5 +1,5 @@
 {
-  "format": "ice-pdk-connectivity",
+  "format": "openvlsi-pdk-connectivity",
   "schema_version": 1,
   "layers": [
     {

@@ -1,1 +1,0 @@
-{"format":"ice-layout","schema_version":2,"device":{"name":"L2_IND_LVS","category":"Passives","source":"L2_IND_LVS.gds","pdk":"ihp-sg13g2","bounds":[-820,-820,820,820],"shapes":[{"layer":27,"datatype":0,"points":[[-820,-820],[-820,820],[820,820],[820,-820]]}],"ports":[],"parameters":[],"generator":null}}

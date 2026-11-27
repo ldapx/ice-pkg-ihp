@@ -1,6 +1,6 @@
-# ICE package-manager artifacts
-ice.lock
-.ice/
+# OpenVLSI package-manager artifacts
+openvlsi.lock
+.openvlsi/
 
 # The IHP PyCell sources required by parametric PCells are vendored under
 # vendor/ihp so the package is self-contained. Generated build content stays

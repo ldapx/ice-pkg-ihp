@@ -10,5 +10,5 @@ from the IHP SG13G2 open-source PDK.
 
 The `implementation/common/layer.map` file is the IHP KLayout DEF-to-GDS layer map.
 
-The physical data is bundled with this ICE package so the digital
+The physical data is bundled with this OpenVLSI package so the digital
 implementation flow does not depend on an external PDK installation or Volare.

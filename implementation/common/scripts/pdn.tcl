@@ -1,4 +1,4 @@
-# IHP SG13G2 power grid. ICE sources this file during floorplan.
+# IHP SG13G2 power grid. OpenVLSI sources this file during floorplan.
 # The layer widths and pitches follow the IHP librelane platform defaults.
 # PDN generation is best-effort so very small floorplans still complete.
 

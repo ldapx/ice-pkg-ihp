@@ -9,7 +9,7 @@ open-source PDK:
 - License: Apache-2.0
 
 The geometry in this file was extracted from the GDS files under
-`ihp/gds/` in the upstream repository and flattened into ICE layout cell
+`ihp/gds/` in the upstream repository and flattened into OpenVLSI layout cell
 polygons for the Layout editor's device browser. For cells with a PyCell
 generator, the stored geometry and parameter metadata were regenerated from
 the matching implementation under `ihp/refs/ihp_pycell/` using the repository's

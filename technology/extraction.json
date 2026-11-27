@@ -1,5 +1,5 @@
 {
-  "format": "ice-device-extraction",
+  "format": "openvlsi-device-extraction",
   "schema_version": 1,
   "pdk": "ihp-sg13g2",
   "devices": [

@@ -9,7 +9,7 @@ open-source PDK:
 - License: Apache-2.0
 
 The fixed-device geometry was extracted from the GDS files under `ihp/gds/`
-and flattened into ICE layout cell polygons. Parameterized cells are indexed
+and flattened into OpenVLSI layout cell polygons. Parameterized cells are indexed
 with their parameter metadata and generator bindings; their geometry is
 generated on demand by the matching implementation under
 `ihp/refs/ihp_pycell/`.

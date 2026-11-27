@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
-"""IHP SG13G2 dummy metal fill provider for ICE procedural layouts.
+"""IHP SG13G2 dummy metal fill provider for OpenVLSI procedural layouts.
 
-ICE calls :func:`add_dummy_fill` when a procedural layout script requests
+OpenVLSI calls :func:`add_dummy_fill` when a procedural layout script requests
 dummy fill through ``layout.add_dummy_fill(...)``.  The implementation follows
 the square-fill rules used by the open-source ``gdsfill`` project for IHP
 SG13G2: a global staggered square lattice, a keep-out around existing geometry
@@ -22,7 +22,7 @@ try:
 except ImportError as error:  # pragma: no cover - exercised only on broken installs
     raise RuntimeError(
         "IHP SG13G2 dummy fill requires KLayout's pya module. "
-        "Install KLayout or run ICE with a Python interpreter that can import pya."
+        "Install KLayout or run OpenVLSI with a Python interpreter that can import pya."
     ) from error
 
 
@@ -272,10 +272,10 @@ def _fill_layer(layout, layer_name, rule, density, deviation, area_region):
 def add_dummy_fill(
     layout, layers=None, density=None, deviation=None, area=None, **options
 ):
-    """Add IHP SG13G2 dummy metal fill to an ICE procedural layout.
+    """Add IHP SG13G2 dummy metal fill to an OpenVLSI procedural layout.
 
     Args:
-        layout: ICE procedural layout builder.
+        layout: OpenVLSI procedural layout builder.
         layers: Optional layer name or iterable of layer names. Defaults to all
             supported metal layers.
         density: Target density in percent, or a mapping keyed by layer name.

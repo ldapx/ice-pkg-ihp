@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""IHP SG13G2 device generator backed by the ICE ``icepy`` PCell runtime.
+"""IHP SG13G2 device generator backed by the OpenVLSI ``openvlsipy`` PCell runtime.
 
 The IHP PyCell sources are vendored under ``vendor/ihp`` so the package is
-self-contained. ICE invokes this script with:
+self-contained. OpenVLSI invokes this script with:
 
     generator.py --pdk-root <package> --module nmos_code --class nmos \
                         --params-file params.json --output geometry.json
 
-The upstream PyCell implementation is evaluated by ``icepy.pcells`` and the
-resulting polygons are transferred through the ICE layout API.
+The upstream PyCell implementation is evaluated by ``openvlsipy.pcells`` and the
+resulting polygons are transferred through the OpenVLSI layout API.
 """
 
 from __future__ import annotations
@@ -39,11 +39,11 @@ def _vendored_ihp_root(argv: list[str]) -> Path | None:
 
 def main() -> int:
     try:
-        import icepy  # noqa: F401  (the runtime needs the bindings)
+        import openvlsipy  # noqa: F401  (the runtime needs the bindings)
     except ImportError as error:
         print(
-            "The IHP device generator requires the ICE icepy Python module. "
-            f"Set PYTHONPATH to the ICE python/ directory and build the icepy target. ({error})",
+            "The IHP device generator requires the OpenVLSI openvlsipy Python module. "
+            f"Set PYTHONPATH to the OpenVLSI python/ directory and build the openvlsipy target. ({error})",
             file=sys.stderr,
         )
         return 2
